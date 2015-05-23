@@ -1,7 +1,10 @@
+/* Clears pre-existing styling by the browser window. */
 *{
 	margin: 0;
 	padding: 0;
 }
+
+/* Padding & Margin Order: Top Right Bottom Left*/
 
 body{
 }
