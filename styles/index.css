@@ -39,13 +39,25 @@ table#login-table input{
 }
 
 input#login-btn{
+	min-width: 5em;
 	background-color: #65BAE8; /* Sky blue */
-	border: 1px solid #65BAE8;
+	border: 2px solid #65BAE8; /* Must be the same color as the background */
+}
+
+input#login-btn:hover{
+	border: 2px solid #2F86DA;	/* Blue */
+	font-weight: bold;
 }
 
 input#register-btn{
+	min-width: 6em;
 	background-color: #F23537; /* Candy red */
-	border: 1px solid #F23537;
+	border: 2px solid #F23537; /* Must be the same color as the background */
+}
+
+input#register-btn:hover{
+	border: 2px solid #DE213A; /* Red */
+	font-weight: bold;
 }
 
 /* Clear the display */
