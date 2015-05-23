@@ -8,9 +8,9 @@
 	
 	<body>
 		<!-- Login text boxes,  "Login" button, "Sign Up" button-->
-		<table id="navigation">
+		<table id="login-table">
 		<tr>
-			<form id="login-box" onsubmit="loginUser()">
+			<form id="login-form" onsubmit="loginUser()">
 				<td><label id="username-label" for="username">Username:</label></td>
 				<td><input id="username-box" type="text" name="username" size="20"/></td>
 					
