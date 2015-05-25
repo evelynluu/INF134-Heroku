@@ -1,0 +1,28 @@
+/* Padding & Margin Order: Top Right Bottom Left*/
+
+/* Clears pre-existing styling by the browser window. */
+*{
+	margin: 0;
+	padding: 0;
+
+	/* Edit font styles for the entire web page */
+	font-family: 'Arial', sans-serif;
+	font-size: 14px;
+	color: #0A0A0A;	/* Almost black font */ 
+}
+
+body{
+	min-width: 100%;
+	min-height: 100%;
+	background-color: #EEEEEE; 		/* Light grey background */
+}
+
+/* Clear the display */
+div.clear{
+	width: 0;
+	height: 0;
+	margin: 0;
+	padding: 0;
+	visibility: hidden;
+	clear:both;
+}
