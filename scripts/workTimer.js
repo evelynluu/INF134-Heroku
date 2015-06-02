@@ -114,7 +114,7 @@ function startBreakTimer(){
 	enableHeaderBtns();
 	removeAllFromDiv(containerDiv);
 	
-	containerDiv.innerHTML = "<p>Break Time!</p><p>Please select a game to play:</p>";
+	containerDiv.innerHTML = "<p>Break Time! Please select a game to play:</p>";
 	
 	addTimerClock(timerDiv, breakDuration, containerDiv, 'timerContainer');
 	
@@ -142,7 +142,8 @@ function loadGameMenu(gameContainer){
 	var snakeBtn = createButton("snakeBtn", "playSnake()", "Snake");
 	var tetrisBtn = createButton("tetrisBtn", "playTetris()", "Tetris");
 	
-	var gameBtnsRow = createBtnRow("gameBtnsRow", snakeBtn, tetrisBtn);
+	//var gameBtnsRow = createBtnRow("gameBtnsRow", snakeBtn, tetrisBtn);
+	var gameBtnsRow = createBtnRow("timerBtnsContainer", snakeBtn, tetrisBtn);
 	
 	gameContainer.appendChild(gameBtnsRow);
 }
