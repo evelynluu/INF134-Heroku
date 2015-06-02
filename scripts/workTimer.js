@@ -111,7 +111,7 @@ function startWorkCountdown(seconds){
 		if(testCount % 10 == 0){
 			seconds--;	
 		}		
-    }, 1000);
+    }, 100);
 }
 
 function pauseWorkTimer(){
