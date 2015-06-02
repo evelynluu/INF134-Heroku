@@ -1,0 +1,147 @@
+/* Padding & Margin Order: Top Right Bottom Left*/
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700);
+
+/* Clears pre-existing styling by the browser window. */
+*{
+	margin: 0;
+	padding: 0;
+
+	/* Edit font styles for the entire web page */
+	font-family: 'Arial', sans-serif;
+	color: #0A0A0A;	/* Almost black font */ 
+}
+
+body{
+	width: 100%;
+	height: auto;
+	background-color: #EEEEEE; 		/* Light grey background */
+	font-size: 14px;
+}
+
+div.clear{				/* Clears the display */
+	width: 0;
+	height: 0;
+	margin: 0;
+	padding: 0;
+	visibility: hidden;
+	clear:both;
+}
+
+div#header{
+	min-width: 100%;
+	min-height: 10%;
+	padding: 1em 0 1em 0;
+	text-align: center;
+}
+
+div#header button{
+	margin-right: 0.1em;
+	padding: 0.1em 0.3em 0.1em 0.3em;	
+	font-size: 1.75em;
+	font-weight: 700;
+	border: 1px solid #D1D1D1;
+	border-radius: 7px;
+	background-color: #EEEEEE;
+}
+
+div#header button:hover{
+	border: 1px solid #B5B5B5;
+	background-color: #D1D1D1;
+}
+
+div#header button.disabled{
+	border: 1px solid #D1D1D1;
+	background-color: #EEEEEE;
+}
+
+div.startContainer{
+	display: table;
+	width: 100%;
+	min-height: 70%;
+	margin: 0;
+	margin-bottom: 7%;
+	padding: 0;
+	background-color: #B5B5B5;
+}
+
+div.timerContainer{
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+div.timerContainer p{
+	font-size: 45px;
+}
+
+div#timerBtnsContainer{
+}
+
+div#timerBtnsContainer button{
+	margin: 3.25em 0.5em 1em 0.5em;		/* Order: Top Right Bottom Left */
+}
+
+div#timerDiv{
+	width: 40%;
+	height: auto;
+	margin: 0 auto 0 auto;	/* Order: Top Right Bottom Left */
+	padding: 5%;
+	padding-bottom: 2%;
+	
+	font-size: 80px;
+}
+
+table#timerTable{
+	width: 90%;
+	margin: 5% auto 2% auto;	/* Order: Top Right Bottom Left */
+}
+
+table#timerTable td{
+	height: auto;
+	padding-right: 0.5em;
+	padding-bottom: 0.5em;
+	text-align: right;
+	
+	font-size: 60px;	/* Make sure this number matches the font-size for select.timerSelect */
+}
+
+select.timerSelect{
+	padding: 0.1em 0.12em 0.1em 0.12em;
+	text-align: right;
+	
+	font-size: 60px;	/* Make sure this number matches the font-size for table#timerTable td */
+}
+
+/* GENERAL TEXT FORMATTING, SORT OF */
+
+h1{
+	margin-top: 1em;
+	font-size: 60px;
+}
+
+p.infoParagraph{
+	width: 75%;
+	margin: 3.5%;
+	
+	font-family: 'Droid Serif', serif;
+	font-weight: 400;
+	font-size: 2em;
+}
+
+/* GENERAL BUTTONS */
+
+button{
+	padding: 0.3em 1em 0.3em 1em;	
+	font-size: 28px;
+	border: 2px solid #686868;
+	border-radius: 7px;
+	background-color: #DDDDDD;
+}
+
+button:hover{
+	border: 2px solid #434343;
+	background-color: #888888;
+}
