@@ -1,0 +1,33 @@
+body{
+	float: left;
+	clear: both;
+	width: 100%;
+	height: 100%;
+	margin: 0px auto;
+	background-color: #ffffff;
+}
+
+#description {
+	width: 50%;
+	margin: 0px auto;
+	text-align: center;
+}
+
+#container {
+	width: 200px;
+	height: 100%;
+	margin: auto;
+}
+
+#myCanvas {
+	float: left;
+	clear: both;
+	width: 200px;
+	height: 400px;
+}
+
+#score {
+	float: left;
+	clear: both;
+	width: 200px;
+}
