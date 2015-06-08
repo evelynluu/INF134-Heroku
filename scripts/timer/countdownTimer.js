@@ -1,5 +1,7 @@
 // Code copied and modified from http://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer
 
+// Called from timer.js to run the countdown for the work and break timers
+
 function CountDownTimer(duration, granularity) {
   this.duration = duration;
   this.granularity = granularity || 1000;

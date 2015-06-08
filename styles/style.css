@@ -65,10 +65,9 @@ div.startContainer{
 	margin: 0;
 	margin-bottom: 7%;
 	padding: 0;
-	background-color: #B5B5B5;
 }
 
-div.timerContainer{
+div.container{
 	width: 100%;
 	height: auto;
 	margin: 0;
@@ -76,14 +75,11 @@ div.timerContainer{
 	text-align: center;
 }
 
-div.timerContainer p{
+div.container p{
 	font-size: 45px;
 }
 
-div#timerBtnsContainer{
-}
-
-div#timerBtnsContainer button{
+div.buttonRowContainer button{
 	margin: 3.25em 0.5em 1em 0.5em;		/* Order: Top Right Bottom Left */
 }
 
@@ -136,9 +132,25 @@ p.infoParagraph{
 	font-size: 2em;
 }
 
+p.alertBox{
+	text-align: left;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+p.timerAlertBox{
+	margin-top: 1em;
+	margin-bottom: 2em;
+}
+
 span.paraHeader{
 	font-weight: 700;
 	font-size: 1.2em;
+}
+
+canvas{
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
 }
 
 /* GENERAL BUTTONS */
@@ -152,6 +164,19 @@ button{
 }
 
 button:hover{
+	border: 2px solid #434343;
+	background-color: #888888;
+}
+
+button.instructionsBtn{
+	padding: 0.3em 1em 0.3em 1em;
+	font-size: 20px;
+	border: 2px solid #686868;
+	border-radius: 7px;
+	background-color: #DDDDDD;
+}
+
+button.instructionsBtn:hover{
 	border: 2px solid #434343;
 	background-color: #888888;
 }
