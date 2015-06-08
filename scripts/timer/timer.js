@@ -1,3 +1,4 @@
+/* Team 7: Alex Beall, Evelyn Luu, Jan Sawyer, Noel Canlas */
 
 // Functions for the work and break timer
 

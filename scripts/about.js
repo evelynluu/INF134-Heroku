@@ -1,3 +1,4 @@
+/* Team 7: Alex Beall, Evelyn Luu, Jan Sawyer, Noel Canlas */
 
 // Shows the description paragraph when user clicks on a button in the headerDiv
 

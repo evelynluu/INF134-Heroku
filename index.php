@@ -1,3 +1,5 @@
+<!-- Team 7: Alex Beall, Evelyn Luu, Jan Sawyer, Noel Canlas -->
+
 <!DOCTYPE HTML>
 <html>
 	<head>   
@@ -25,7 +27,6 @@
 						
 						<td colspan="2">
 							<select name="workDuration" class="timerSelect">
-								<option value="0.05">0.05</option> <!-- For testing purposes -->
 								<option value="1">1</option> <!-- For demo-ing purposes -->
 								<option value="15">15</option>
 								<option value="30">30</option>
@@ -40,7 +41,6 @@
 						
 						<td colspan="2">
 							<select name="breakDuration" class="timerSelect">
-								<option value="0.2">0.2</option> <!-- For demo-ing purposes -->
 								<option value="1">1</option> <!-- For demo-ing purposes -->
 								<option value="5">5</option>
 								<option value="10">10</option>

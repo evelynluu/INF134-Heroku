@@ -1,3 +1,7 @@
+/* Team 7: Alex Beall, Evelyn Luu, Jan Sawyer, Noel Canlas */
+
+// This code is copied and modified from www.drewbuck.com/2013/03/tetris-in-html5-for-noobs-part-1-introduction/
+
 //Global variables
 
 var ctx;        //Canvas object

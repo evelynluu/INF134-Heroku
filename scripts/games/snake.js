@@ -1,3 +1,5 @@
+/* Team 7: Alex Beall, Evelyn Luu, Jan Sawyer, Noel Canlas */
+
 // This code is copied and modified from http://www.codeproject.com/Articles/230794/HTML5-Games-101-An-introductory-tutorial-to-HTML5
 
 //global constants

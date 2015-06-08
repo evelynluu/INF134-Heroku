@@ -1,3 +1,4 @@
+/* Team 7: Alex Beall, Evelyn Luu, Jan Sawyer, Noel Canlas */
 
 // Functions for manipulating the DOM: buttons, resetting, headerDiv
 
