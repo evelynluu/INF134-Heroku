@@ -44,7 +44,7 @@ div#header button{
 	font-size: 1.75em;
 	font-weight: 700;
 	border: 1px solid #D1D1D1;
-	border-radius: 7px;
+	border-radius: 6px;
 	background-color: #EEEEEE;
 }
 
@@ -65,10 +65,9 @@ div.startContainer{
 	margin: 0;
 	margin-bottom: 7%;
 	padding: 0;
-	background-color: #B5B5B5;
 }
 
-div.timerContainer{
+div.container{
 	width: 100%;
 	height: auto;
 	margin: 0;
@@ -76,14 +75,11 @@ div.timerContainer{
 	text-align: center;
 }
 
-div.timerContainer p{
+div.container p{
 	font-size: 45px;
 }
 
-div#timerBtnsContainer{
-}
-
-div#timerBtnsContainer button{
+div.buttonRowContainer button{
 	margin: 3.25em 0.5em 1em 0.5em;		/* Order: Top Right Bottom Left */
 }
 
@@ -136,9 +132,42 @@ p.infoParagraph{
 	font-size: 2em;
 }
 
+p.alertBox{
+	margin-top: 1em;
+	margin-bottom: 1em;
+	
+	font-family: 'Droid Serif', serif;
+	font-weight: 400;
+	text-align: left;
+}
+
+p.timerAlertBox{
+	margin-top: 1em;
+	margin-bottom: 2em;
+
+	font-family: 'Droid Serif', serif;
+	font-weight: 400;
+}
+
 span.paraHeader{
 	font-weight: 700;
 	font-size: 1.2em;
+}
+
+div.gameScoreContainer{
+	margin: 0;
+	margin-bottom: 0.25em;
+}
+
+div.gamePromptContainer{
+	margin: 0;
+}
+
+canvas.gameCanvas{
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
+	margin: 1.5em;
+	margin-top: 1em;
 }
 
 /* GENERAL BUTTONS */
@@ -152,6 +181,21 @@ button{
 }
 
 button:hover{
+	border: 2px solid #434343;
+	background-color: #888888;
+}
+
+button.instructionsBtn{
+	margin:0;
+	margin-bottom: 1em;
+	padding: 0.15em 0.5em 0.15em 0.5em;
+	font-size: 1em;
+	border: 2px solid #686868;
+	border-radius: 3px;
+	background-color: #DDDDDD;
+}
+
+button.instructionsBtn:hover{
 	border: 2px solid #434343;
 	background-color: #888888;
 }

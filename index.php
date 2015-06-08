@@ -4,7 +4,8 @@
 	
 		<title>Start. Work. Break.</title>
 		
-		<link href="styles/style.css" type="text/css" rel="stylesheet" />
+		<link type="text/css" rel="stylesheet" href="styles/style.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/alertify.css" />
 		
 	</head>
 	<body>
@@ -15,7 +16,7 @@
 			<button id="header-breakBtn" onclick="showAbout('break')">Break.</button>
 		</div>
 		
-		<div id="container" class="startContainer" onload="workTimer.js">
+		<div id="bodyContainer" class="startContainer">
 			<table id="timerTable">
 				<form id="timerForm">
 					<!-- Work Timer Dropdown -->
@@ -24,6 +25,7 @@
 						
 						<td colspan="2">
 							<select name="workDuration" class="timerSelect">
+								<option value="0.05">0.05</option> <!-- For testing purposes -->
 								<option value="1">1</option> <!-- For demo-ing purposes -->
 								<option value="15">15</option>
 								<option value="30">30</option>
@@ -38,6 +40,7 @@
 						
 						<td colspan="2">
 							<select name="breakDuration" class="timerSelect">
+								<option value="0.2">0.2</option> <!-- For demo-ing purposes -->
 								<option value="1">1</option> <!-- For demo-ing purposes -->
 								<option value="5">5</option>
 								<option value="10">10</option>
@@ -56,8 +59,15 @@
 			</table>
 		</div>
 		
+		<script type="text/javascript" src="scripts/layout.js"></script>
 		<script type="text/javascript" src="scripts/about.js"></script>
-		<script type="text/javascript" src="scripts/countdownTimer.js"></script>
-		<script type="text/javascript" src="scripts/workTimer.js"></script>
+		<script type="text/javascript" src="scripts/alertify/alertify.js"></script>
+		
+		<script type="text/javascript" src="scripts/timer/countdownTimer.js"></script>
+		<script type="text/javascript" src="scripts/timer/timer.js"></script>
+		
+		<script type="text/javascript" src="scripts/loadGames.js"></script>
+		<script type="text/javascript" src="scripts/games/snake.js"></script>
+		<script type="text/javascript" src="scripts/games/tetris.js"></script>
 	</body>
 </html>
