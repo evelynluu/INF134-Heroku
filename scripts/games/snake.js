@@ -32,7 +32,8 @@ var scoreDiv;                // to hold the context of div used to display score
 
 var eaten = true;               // to check if new rat needs to be placed
 var isPaused = false;
-var gameOver = true;           // to check if the game is over and enable control to restart the game
+var gameOver = false;           // to check if the game is over and enable control to restart the game
+var justStarted = true;
 
 var controlsDiv;                // to hold the context of div used to display game controls
 
@@ -53,7 +54,9 @@ function initializeSnake()
 	
 	//setTimeout calls the game loop i.e. gameProcess function after the specified time
 	intervalId = setTimeout(gameProcess, 1000/6);
-	clearTimeout(intervalId);
+	//clearTimeout(intervalId);
+	pauseSnakeGame();
+	
 	
 	//get handle to the div containing our score and level details
 	scoreDiv = document.getElementById("scoreBoard");
@@ -92,7 +95,7 @@ function restart()
 	
 	eaten = true;
 	
-	scoreDiv.innerHTML = "Score: " +score+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Level: "+level;
+	scoreDiv.innerHTML = "<strong>Score</strong>: " +score+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Level</strong>: "+level;
 	promptDiv.innerHTML = "";
 	
 	clearTimeout(intervalId);
@@ -131,20 +134,34 @@ function keydown(e)
 		vX[0] = 0;
 		e.preventDefault();
 	}
-	else if (e.keyCode == 80 && isPaused)	// p - resumes game from "pause"
+	/*else if (e.keyCode == 80 && isPaused)	// p - resumes game from "pause"
 	{
 		isPaused = false;
 		intervalId = setTimeout(gameProcess, 1000 /(6*level));
-	}
-	else if (e.keyCode == 80 && !isPaused)	// p - pause game
+	}*/
+	else if (e.keyCode == 80 /*&& !isPaused*/)	// p - pause game
 	{
-		isPaused = true;
-		intervalId = clearTimeout(intervalId);
+		pauseSnakeGame();
 	}
 	  else if (e.keyCode == 13 && gameOver == true)		// enter - restart game when game over
 	{
 		gameOver = false;
 		restart();
+	}
+	else if (e.keyCode ==13 && justStarted) {
+		justStarted = false;
+		restart();
+	}
+}
+
+function pauseSnakeGame() {
+	if(!isPaused) {
+		isPaused = true;
+		intervalId = clearTimeout(intervalId);
+	}
+	else if (isPaused) {
+		isPaused = false;
+		intervalId = setTimeout(gameProcess, 1000 /(6*level));
 	}
 }
 
@@ -209,21 +226,22 @@ function checkCollision()
 {
 	if(bodyX[0] >= width || bodyX[0] < 0 || bodyY[0] < 0 || bodyY[0] >= height)
 	{
-		scoreDiv.innerHTML = "Score: " +score+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Level: "+level;
-		promptDiv.innerHTML = "<strong>Game over!</strong> Press <strong>Enter/Return</strong> to restart the game."; 
-		gameOver = true;
-		clearTimeout(intervalId);
+		resetGameState();
 	}
 	else if(snakeLength > 4)
+	{
+		if(checkSelfCollision(bodyX[0],bodyY[0]))
 		{
-			if(checkSelfCollision(bodyX[0],bodyY[0]))
-			{
-				scoreDiv.innerHTML = "Score: " +score+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Level: "+level;
-				promptDiv.innerHTML = "<strong>Game over!</strong> Press <strong>Enter/Return</strong> to restart the game.";
-				gameOver = true;
-				clearTimeout(intervalId);
-			}
+			resetGameState();
 		}
+	}
+}
+
+function resetGameState(){
+	scoreDiv.innerHTML = "<strong>Score</strong> " +score+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Level</strong>: "+ level;
+	promptDiv.innerHTML = "<strong>Game over!</strong> Press <strong>Enter/Return</strong> to restart the game."; 
+	gameOver = true;
+	clearTimeout(intervalId);
 }
 
 /* *************************** /
@@ -325,7 +343,7 @@ function eatRat()
 			level++;
 		
 		// update score on webpage
-		scoreDiv.innerHTML = "Score: " +score+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Level: "+level;
+		scoreDiv.innerHTML = "<strong>Score</strong>: "+score+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Level</strong>: "+level;
 	}
 }
 

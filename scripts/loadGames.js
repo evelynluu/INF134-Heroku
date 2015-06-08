@@ -114,10 +114,16 @@ function resumeGameAfterInstructions(game){
 // *************************
 
 function createScoreBoard(){
-	var score = createDiv("scoreBoard", "gameScore");
-	score.innerHTML = "Score: 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Level: 1";
+	var score = createDiv("scoreBoard", "gameScoreContainer");
+	score.innerHTML = "<strong>Score</strong>: 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Level</strong>: 1";
 	
 	return score;
+}
+
+function createGamePrompt(){
+	var div = createDiv("gamePrompt", "gamePromptContainer");
+	div.innerHTML = "Press <strong>Enter/Return</strong> to start the game.";
+	return div;
 }
 
 function createGameCanvas(id){
@@ -128,12 +134,6 @@ function createGameCanvas(id){
 	canvas.setAttribute("height", "400px");
 	
 	return canvas;
-}
-
-function createGamePrompt(){
-	var div = createDiv("gamePrompt", "");
-	div.innerHTML = "Press <strong>Enter/Return</strong> to start the game.";
-	return div;
 }
 
 function appendGameElements(div){

@@ -154,10 +154,20 @@ span.paraHeader{
 	font-size: 1.2em;
 }
 
-canvas{
+div.gameScoreContainer{
+	margin: 0;
+	margin-bottom: 0.25em;
+}
+
+div.gamePromptContainer{
+	margin: 0;
+}
+
+canvas.gameCanvas{
 	background-color: #FFFFFF;
 	border: 1px solid #000000;
 	margin: 1.5em;
+	margin-top: 1em;
 }
 
 /* GENERAL BUTTONS */
@@ -176,6 +186,8 @@ button:hover{
 }
 
 button.instructionsBtn{
+	margin:0;
+	margin-bottom: 1em;
 	padding: 0.15em 0.5em 0.15em 0.5em;
 	font-size: 1em;
 	border: 2px solid #686868;

@@ -1,4 +1,5 @@
 //Global variables
+
 var ctx;        //Canvas object
 var width, height;		// Canvas width and height
  
@@ -17,6 +18,7 @@ var timestep;	//Time between calls to gameStep()
 
 var gamePaused = false;
 var justStarted = true;
+var gameOver = false;
 
 var promptDiv;
 
@@ -500,8 +502,13 @@ function keyDown(e) {
 			gameStep();
 		}
 	}
-	else if(e.keyCode == 80) { //Pause
-		pauseGame();
+	else if(e.keyCode == 80) { // Changing game state for pause
+		if(justStarted){
+			return;
+		} 
+		else {
+			pauseGame();
+		}
 	}
 	else if(e.keyCode == 13) { //Restart
 		if(gamePaused && justStarted){
@@ -509,7 +516,7 @@ function keyDown(e) {
 			justStarted = false;
 			restartGame();
 		}
-		else if(gamePaused){
+		else if(gamePaused || !gameOver){
 			return false;
 		} 
 		else{
@@ -561,6 +568,7 @@ function gameStep() {
 		else {
 			promptDiv.innerHTML = "<strong>Game over!</strong> Press <strong>Enter/Return</strong> to restart the game."; 
 			//initializeTetris();
+			gameOver = true;
 			return;
 		}
 		
@@ -603,7 +611,7 @@ function checkLines() {
 			}
 		
 			//Update score and level display
-			document.getElementById("scoreBoard").innerHTML = "Score: " + score + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Level: " + level;
+			document.getElementById("scoreBoard").innerHTML = "<strong>Score</strong>: " + score + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Level</strong>: " + level;
 		
 			var gridHeightInside = gridHeight - 1;
 			
