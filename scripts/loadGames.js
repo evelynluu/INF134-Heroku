@@ -5,7 +5,6 @@ var gameCanvas, instrBtn;
 var scoreBoard = createScoreBoard();
 var prompt = createGamePrompt();
 
-
 // Called from timer.js when the break timer starts
 function loadGameMenu(gameContainer){
 	var snakeBtn = createButton("snakeBtn", "playSnake()", "Snake");
@@ -25,8 +24,7 @@ function playSnake(){
 	
 	instrBtn = createInstructionsBtn("snake");
 	gameCanvas = createGameCanvas("snakeCanvas");
-	prompt.innerHTML = "Control Snake: UP, DOWN, LEFT, RIGHT <br/> Space = Pause<br/> Shift = Play";
-	
+
 	appendGameElements(containerDiv);
 	
 	initializeSnake();
@@ -41,7 +39,6 @@ function playTetris(){
 	
 	instrBtn = createInstructionsBtn("tetris");
 	gameCanvas = createGameCanvas("tetrisCanvas");
-	prompt.innerHTML = "Use directional arrow keys to play.";
 	
 	appendGameElements(containerDiv);
 	
@@ -69,7 +66,6 @@ function showInstructions(game){
 									
 	if(game === "snake"){
 		
-		keydown(80);
 		isPaused = true;
 		intervalId = clearTimeout(intervalId);
 		
@@ -88,30 +84,26 @@ function showInstructions(game){
 						 "<br/><br/>Press <strong>spacebar</strong> to place object automatically to the bottom.";
 	}
 	
-	var controlText = "Press <strong>p</strong> to <strong>Pause</strong> and <strong>Resume</strong> the game."+
-								"<br/>Press <strong>Enter/Return</strong> to <strong>Restart</strong> the game.";
+	var controlText = "Press <strong>p</strong> to <strong>Pause</strong> and <strong>Resume</strong> the game.";
 
 	var instrText = instrHeader + "<p class=\"alertBox\">" + instr + "<br/><br/>" + controlText + "</p>";
 	
-	//alertify.alert(boxText);
-	
 	alertify.confirm(instrText, function(e){
 		if(e){
-			pauseGameForInstructions(game);
+			//resumeGameAfterInstructions(game);
 		}
 		else{
-			pauseGameForInstructions(game);
+			//resumeGameAfterInstructions(game);
 		}
 	});
 }
 
-function pauseGameForInstructions(game){
-	if(game === "snake"){
-		keydown(80);
+function resumeGameAfterInstructions(game){
+	if(game === "snake" && gameOver == false){
 		isPaused = false;
 		intervalId = setTimeout(gameProcess, 1000 /(6*level));
 	}
-	else if(game === "tetris"){
+	else if(game === "tetris" && justStarted == false){
 		gamePaused = true;
 		pauseGame();
 	}
@@ -140,12 +132,16 @@ function createGameCanvas(id){
 
 function createGamePrompt(){
 	var div = createDiv("gamePrompt", "");
+	div.innerHTML = "Press <strong>Enter/Return</strong> to start the game.";
 	return div;
 }
 
 function appendGameElements(div){
+	div.appendChild(instrBtn);
 	div.appendChild(scoreBoard);
 	div.appendChild(prompt);
 	div.appendChild(gameCanvas);
-	div.appendChild(instrBtn);
+	
+	var clearDiv = createDiv("", "clear");
+	div.appendChild(clearDiv);
 }

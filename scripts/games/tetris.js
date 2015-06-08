@@ -16,7 +16,9 @@ var level;	//Current level
 var timestep;	//Time between calls to gameStep()	
 
 var gamePaused = false;
+var justStarted = true;
 
+var promptDiv;
 
 /************************************************
 Allows the user to pause the game.
@@ -40,6 +42,7 @@ Allows the user to restart the game.
 ************************************************/
 
 function restartGame() {
+	promptDiv.innerHTML = "";
 	drawTetrimino(x,y,t,o,0);  
 	drawGrid();
 	initializeTetris();
@@ -75,9 +78,6 @@ function initializeTetris() {
 			grid[i][j] = 0;
 	}
 	
-	//Draw the current tetrimino
-	drawTetrimino(x,y,t,o,1);
-	
 	//Redraw the grid
 	drawGrid();
 	
@@ -85,9 +85,18 @@ function initializeTetris() {
 	level = 1;
 	timestep = 1000;
 	
+	promptDiv = document.getElementById("gamePrompt");
+	
 	//Start the game timer
 	clearInterval(tetrisTimer);
 	tetrisTimer = setInterval(function(){gameStep()}, timestep);
+	
+	if(justStarted){
+		pauseGame();
+	}
+	
+	//Draw the current tetrimino
+	drawTetrimino(x,y,t,o,1);
 }
 
 
@@ -495,7 +504,12 @@ function keyDown(e) {
 		pauseGame();
 	}
 	else if(e.keyCode == 13) { //Restart
-		if(gamePaused === true){
+		if(gamePaused && justStarted){
+			pauseGame();
+			justStarted = false;
+			restartGame();
+		}
+		else if(gamePaused){
 			return false;
 		} 
 		else{
@@ -545,8 +559,8 @@ function gameStep() {
 			o = o2;
 		} 
 		else {
-			alert("Game Over");
-			initializeTetris();
+			promptDiv.innerHTML = "<strong>Game over!</strong> Press <strong>Enter/Return</strong> to restart the game."; 
+			//initializeTetris();
 			return;
 		}
 		
