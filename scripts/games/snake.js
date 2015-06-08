@@ -145,19 +145,28 @@ function keydown(e)
 	{
 		pauseSnakeGame();
 	}
-	  else if (e.keyCode == 13 && gameOver == true)		// enter - restart game when game over
+	  else if (e.keyCode == 13)		// enter - restart game when game over
 	{
-		gameOver = false;
-		restart();
-	}
-	else if (e.keyCode ==13 && justStarted) {
-		justStarted = false;
-		restart();
+		if(gameOver) {
+			gameOver = false;
+			restart();
+		}
+		else if (justStarted) {
+			justStarted = false;
+			pauseSnakeGame();
+			restart();
+		}
+		else {
+			return;
+		}
 	}
 }
 
 function pauseSnakeGame() {
-	if(!isPaused) {
+	if (isPaused && justStarted) {
+		return;
+	}
+	else if(!isPaused) {
 		isPaused = true;
 		intervalId = clearTimeout(intervalId);
 	}
