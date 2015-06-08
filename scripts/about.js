@@ -24,11 +24,11 @@ function showAbout(button){
 											+ "<br/><br/>"
 											+ "We have included a timer that allows users to work in 15 or 30 minute time intervals, as these have generally been accepted to be appropriate blocks. The user also has the option of taking a 5- or 10-minute break. At the end of the work block timer, the user will be presented with a couple of games that they may choose to play during their allotted break time.";
 	}
-	else if(button === "rest"){
-		// Stops focus on the "Rest" button
-		document.getElementById('header-restBtn').blur();
+	else if(button === "break"){
+		// Stops focus on the "Break" button
+		document.getElementById('header-breakBtn').blur();
 		
-		paragraph.id = "restParagraph";
+		paragraph.id = "breakParagraph";
 		paragraph.innerHTML = "<span id=\"tetrisHeader\" class=\"paraHeader\">Tetris</span>"
 											+ "<br/>"
 											+ "The objective of Tetris is to create a horizontal line of ten units without gaps by strategically rearranging falling tetriminos under a limited time. Once the horizontal line is created, it is eliminated and all other remnants above it fall down to the current height. As the games progresses, the tetriminos begin to fall faster and the game is finished when the stack of tetriminos reaches the top. Players use the directional arrow keys to rotate and move the tetriminos."

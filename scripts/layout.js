@@ -4,7 +4,7 @@
 var headerDiv = document.getElementById("header");
 var headerBtns = [document.getElementById("header-startBtn"),
 						    document.getElementById("header-workBtn"), 
-						    document.getElementById("header-restBtn")];
+						    document.getElementById("header-breakBtn")];
 
 var containerDiv = document.getElementById("bodyContainer");
 

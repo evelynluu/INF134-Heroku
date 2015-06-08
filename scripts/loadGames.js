@@ -88,7 +88,7 @@ function showInstructions(game){
 						 "<br/><br/>Press <strong>spacebar</strong> to place object automatically to the bottom.";
 	}
 	
-	var controlText = "Press <strong>p</strong> to <strong>Pause</strong>."+
+	var controlText = "Press <strong>p</strong> to <strong>Pause</strong> and <strong>Resume</strong> the game."+
 								"<br/>Press <strong>Enter/Return</strong> to <strong>Restart</strong> the game.";
 
 	var instrText = instrHeader + "<p class=\"alertBox\">" + instr + "<br/><br/>" + controlText + "</p>";
