@@ -60,13 +60,13 @@ div#header button.disabled{
 div.startContainer{
 	display: table;
 	width: 100%;
-	min-height: 70%;
+	height: auto;
 	margin: 0;
-	margin-bottom: 7%;
 	padding: 0;
 }
 
 div.container{
+	display:block;
 	width: 100%;
 	height: auto;
 	margin: 0;
@@ -75,60 +75,64 @@ div.container{
 }
 
 div.container p{
-	font-size: 45px;
+	font-size: 3.25em;
 }
 
 div.buttonRowContainer button{
-	margin: 3.25em 0.5em 1em 0.5em;		/* Order: Top Right Bottom Left */
+	margin: 2.75em 0.5em 1em 0.5em;		/* Order: Top Right Bottom Left */
 }
 
 div#timerDiv{
 	width: 40%;
 	height: auto;
 	margin: 0 auto 0 auto;	/* Order: Top Right Bottom Left */
-	padding: 5%;
-	padding-bottom: 2%;
+	padding: 3%;
+	padding-bottom: 1.5%;
 	
-	font-size: 80px;
+	font-size: 5.7em;
 }
 
 table#timerTable{
-	width: 90%;
-	margin: 5% auto 2% auto;	/* Order: Top Right Bottom Left */
+	width: 100%;
+	height: auto;
+	margin-top: 5%;
 }
 
 table#timerTable td{
 	height: auto;
-	padding-right: 0.5em;
+	padding-right: 0.65em;
 	padding-bottom: 0.5em;
 	text-align: right;
-	
-	font-size: 60px;	/* Make sure this number matches the font-size for select.timerSelect */
+	font-size: 4.75vw;
 }
 
 select.timerSelect{
 	padding: 0.1em 0.12em 0.1em 0.12em;
 	text-align: right;
-	
-	font-size: 60px;	/* Make sure this number matches the font-size for table#timerTable td */
+	font-size: 1em;
 }
 
 /* GENERAL TEXT FORMATTING, SORT OF */
 
 h1{
-	margin-top: 1em;
-	font-size: 60px;
+	margin-top: 0.5em;
+	font-size: 5.5em;
 }
 
 p.infoParagraph{
 	width: 75%;
-	margin: 3.5%;
+	margin: 3%;
 	margin-left:auto;
 	margin-right:auto;
 	
 	font-family: 'Droid Serif', serif;
 	font-weight: 400;
 	font-size: 2em;
+}
+
+p#selectGamePrompt{
+	margin-top: 3%;
+	font-size:1em;
 }
 
 p.alertBox{
@@ -173,7 +177,7 @@ canvas.gameCanvas{
 
 button{
 	padding: 0.3em 1em 0.3em 1em;	
-	font-size: 28px;
+	font-size: 2em;
 	border: 2px solid #686868;
 	border-radius: 7px;
 	background-color: #DDDDDD;
@@ -182,6 +186,10 @@ button{
 button:hover{
 	border: 2px solid #434343;
 	background-color: #888888;
+}
+
+button#workTimerBtn{
+	font-size: 0.75em;
 }
 
 button.instructionsBtn{
