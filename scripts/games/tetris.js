@@ -1,4 +1,5 @@
 //Global variables
+
 var ctx;        //Canvas object
 var width, height;		// Canvas width and height
  
@@ -16,7 +17,10 @@ var level;	//Current level
 var timestep;	//Time between calls to gameStep()	
 
 var gamePaused = false;
+var justStarted = true;
+var gameOver = false;
 
+var promptDiv;
 
 /************************************************
 Allows the user to pause the game.
@@ -40,6 +44,7 @@ Allows the user to restart the game.
 ************************************************/
 
 function restartGame() {
+	promptDiv.innerHTML = "";
 	drawTetrimino(x,y,t,o,0);  
 	drawGrid();
 	initializeTetris();
@@ -75,9 +80,6 @@ function initializeTetris() {
 			grid[i][j] = 0;
 	}
 	
-	//Draw the current tetrimino
-	drawTetrimino(x,y,t,o,1);
-	
 	//Redraw the grid
 	drawGrid();
 	
@@ -85,9 +87,18 @@ function initializeTetris() {
 	level = 1;
 	timestep = 1000;
 	
+	promptDiv = document.getElementById("gamePrompt");
+	
 	//Start the game timer
 	clearInterval(tetrisTimer);
 	tetrisTimer = setInterval(function(){gameStep()}, timestep);
+	
+	if(justStarted){
+		pauseGame();
+	}
+	
+	//Draw the current tetrimino
+	drawTetrimino(x,y,t,o,1);
 }
 
 
@@ -491,11 +502,21 @@ function keyDown(e) {
 			gameStep();
 		}
 	}
-	else if(e.keyCode == 80) { //Pause
-		pauseGame();
+	else if(e.keyCode == 80) { // Changing game state for pause
+		if(justStarted){
+			return;
+		} 
+		else {
+			pauseGame();
+		}
 	}
 	else if(e.keyCode == 13) { //Restart
-		if(gamePaused === true){
+		if(gamePaused && justStarted){
+			pauseGame();
+			justStarted = false;
+			restartGame();
+		}
+		else if(gamePaused || !gameOver){
 			return false;
 		} 
 		else{
@@ -545,8 +566,9 @@ function gameStep() {
 			o = o2;
 		} 
 		else {
-			alert("Game Over");
-			initializeTetris();
+			promptDiv.innerHTML = "<strong>Game over!</strong> Press <strong>Enter/Return</strong> to restart the game."; 
+			//initializeTetris();
+			gameOver = true;
 			return;
 		}
 		
@@ -589,7 +611,7 @@ function checkLines() {
 			}
 		
 			//Update score and level display
-			document.getElementById("scoreBoard").innerHTML = "Score: " + score + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Level: " + level;
+			document.getElementById("scoreBoard").innerHTML = "<strong>Score</strong>: " + score + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Level</strong>: " + level;
 		
 			var gridHeightInside = gridHeight - 1;
 			

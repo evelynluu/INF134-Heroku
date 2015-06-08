@@ -33,6 +33,7 @@ var scoreDiv;                // to hold the context of div used to display score
 var eaten = true;               // to check if new rat needs to be placed
 var isPaused = false;
 var gameOver = false;           // to check if the game is over and enable control to restart the game
+var justStarted = true;
 
 var controlsDiv;                // to hold the context of div used to display game controls
 
@@ -42,7 +43,6 @@ var controlsDiv;                // to hold the context of div used to display ga
  * *************************** */
 function initializeSnake()
 {
-	console.log("snake init() called");
 	// Get game context
 	context = document.getElementById("snakeCanvas").getContext("2d");
 	
@@ -54,11 +54,14 @@ function initializeSnake()
 	
 	//setTimeout calls the game loop i.e. gameProcess function after the specified time
 	intervalId = setTimeout(gameProcess, 1000/6);
+	//clearTimeout(intervalId);
+	pauseSnakeGame();
+	
 	
 	//get handle to the div containing our score and level details
 	scoreDiv = document.getElementById("scoreBoard");
 	
-	//get handle to the div containing prompting the user to do an action
+	//get handle to the div containing prompting the user to start the game
 	promptDiv = document.getElementById("gamePrompt");
 	
 	//specify the function to handle the keypress
@@ -92,12 +95,11 @@ function restart()
 	
 	eaten = true;
 	
-	scoreDiv.innerHTML = "Score: " +score+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Level: "+level;
-	promptDiv.innerHTML = "Control Snake: UP, DOWN, LEFT, RIGHT";
+	scoreDiv.innerHTML = "<strong>Score</strong>: " +score+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Level</strong>: "+level;
+	promptDiv.innerHTML = "";
 	
 	clearTimeout(intervalId);
 	intervalId = setTimeout(gameProcess, 1000/(6*level));
-	
 }
 
 /* *************************** /
@@ -132,24 +134,35 @@ function keydown(e)
 		vX[0] = 0;
 		e.preventDefault();
 	}
-	else if (e.keyCode == 80 && isPaused)	// p - resumes game from "pause"
+	/*else if (e.keyCode == 80 && isPaused)	// p - resumes game from "pause"
 	{
 		isPaused = false;
 		intervalId = setTimeout(gameProcess, 1000 /(6*level));
-	}
-
-	else if (e.keyCode == 80 && !isPaused)	// p - pause game
+	}*/
+	else if (e.keyCode == 80 /*&& !isPaused*/)	// p - pause game
 	{
-		isPaused = true;
-		intervalId = clearTimeout(intervalId);
+		pauseSnakeGame();
 	}
-	
 	  else if (e.keyCode == 13 && gameOver == true)		// enter - restart game when game over
 	{
 		gameOver = false;
 		restart();
 	}
+	else if (e.keyCode ==13 && justStarted) {
+		justStarted = false;
+		restart();
+	}
+}
 
+function pauseSnakeGame() {
+	if(!isPaused) {
+		isPaused = true;
+		intervalId = clearTimeout(intervalId);
+	}
+	else if (isPaused) {
+		isPaused = false;
+		intervalId = setTimeout(gameProcess, 1000 /(6*level));
+	}
 }
 
 /* *************************** /
@@ -177,7 +190,7 @@ function drawPoint(x,y)
 	context.fillRect(x,y,sqSize, sqSize);
 	context.fill();
 	
-	// Then draw the square boundary in a darker green
+	// Then draw the square boundary in white
 	context.strokeStyle="#FFF";
 	context.strokeRect(x,y,sqSize, sqSize);
 }
@@ -190,8 +203,8 @@ function drawRatPoint(x,y)
 	context.fillRect(x,y,sqSize, sqSize);
 	context.fill();
 	
-	// Then draw the square boundary in a slightly lighter brown
-	context.strokeStyle="#4e4e36";
+	// Then draw the square boundary in white
+	context.strokeStyle="#FFF";
 	context.strokeRect(x,y,sqSize, sqSize);
 }
 
@@ -213,21 +226,22 @@ function checkCollision()
 {
 	if(bodyX[0] >= width || bodyX[0] < 0 || bodyY[0] < 0 || bodyY[0] >= height)
 	{
-		scoreDiv.innerHTML = "Score: " +score+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Level: "+level+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Game Over</b>";
-		promptDiv.innerHTML = "Press \"Enter\" to restart"; 
-		gameOver = true;
-		clearTimeout(intervalId);
+		resetGameState();
 	}
 	else if(snakeLength > 4)
+	{
+		if(checkSelfCollision(bodyX[0],bodyY[0]))
 		{
-			if(checkSelfCollision(bodyX[0],bodyY[0]))
-			{
-				scoreDiv.innerHTML = "Score: " +score+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Level: "+level+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Game Over</b>";
-				promptDiv.innerHTML = "Press \"Enter\" to restart";
-				gameOver = true;
-				clearTimeout(intervalId);
-			}
+			resetGameState();
 		}
+	}
+}
+
+function resetGameState(){
+	scoreDiv.innerHTML = "<strong>Score</strong> " +score+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Level</strong>: "+ level;
+	promptDiv.innerHTML = "<strong>Game over!</strong> Press <strong>Enter/Return</strong> to restart the game."; 
+	gameOver = true;
+	clearTimeout(intervalId);
 }
 
 /* *************************** /
@@ -329,7 +343,7 @@ function eatRat()
 			level++;
 		
 		// update score on webpage
-		scoreDiv.innerHTML = "Score: " +score+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Level: "+level;
+		scoreDiv.innerHTML = "<strong>Score</strong>: "+score+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Level</strong>: "+level;
 	}
 }
 

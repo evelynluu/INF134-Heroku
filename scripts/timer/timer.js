@@ -121,8 +121,6 @@ function resumeWorkTimer(){
 
 /* ***************
       Break Timer
-	  
-	"Rest" = "Break"
  *************** */
 
 function startBreakTimer(){
@@ -130,7 +128,7 @@ function startBreakTimer(){
 	removeHeaderText();
 	removeAllFromDiv(containerDiv);
 	
-	addHeaderText("breakTimerHeader", "Rest Timer");
+	addHeaderText("breakTimerHeader", "Break Timer");
 		
 	addTimerClock(timerDiv, breakDuration, containerDiv, 'container');
 	
@@ -152,7 +150,8 @@ function startBreakCountdown(seconds){
 	
 	function workTime() {
         if (this.expired()) {
-            resetWindow();
+            alert("Attention please! Your break time is over.");
+			resetWindow();
         }
     }
 }

@@ -2,7 +2,7 @@
 <html>
 	<head>   
 	
-		<title>Start. Work. Rest.</title>
+		<title>Start. Work. Break.</title>
 		
 		<link type="text/css" rel="stylesheet" href="styles/style.css"/>
 		<link type="text/css" rel="stylesheet" href="styles/alertify.css" />
@@ -13,7 +13,7 @@
 		<div id="header">
 			<button id="header-startBtn" onclick="showAbout('start')">Start.</button>
 			<button id="header-workBtn" onclick="showAbout('work')">Work.</button>
-			<button id="header-restBtn" onclick="showAbout('rest')">Rest.</button>
+			<button id="header-breakBtn" onclick="showAbout('break')">Break.</button>
 		</div>
 		
 		<div id="bodyContainer" class="startContainer">
